@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Styles/main.min.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body class="body-background">
+    <div class="container">
+        <div class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Home")">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav" style="float: right;">
+                        <li>
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+                                Log in
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 header">
+                <div class="well text-center">
+                    Students register
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-padding">
+            <div class="col-sm-12 main-wrapper">
+                @RenderBody()
+            </div>
+        </div>
+
+        <div class="footer navbar-fixed-bottom">
+            <div class="container">
+                <p class="text-muted text-center">Created by Krzysztof Truskolaski</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Log in</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        To log in, please type in your credentials
+                    </p>
+
+                    @Html.Partial("~/Views/Login/Partials/_Login.cshtml")
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Log in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+</body>
+</html>
