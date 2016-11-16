@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using StudentsRegister.Models.Login;
 using System.Web.Mvc;
 
 namespace StudentsRegister.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-        public ActionResult Index()
+        public ActionResult Index(LoginModel loginModel)
         {
             return View();
         }
