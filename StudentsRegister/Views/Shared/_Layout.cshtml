@@ -27,7 +27,7 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav" style="float: right;">
+                    <ul class="nav navbar-nav navbar-right">
 
                         @if (Request.IsAuthenticated)
                         {
@@ -37,6 +37,11 @@
                         }
                         else
                         {
+                            <li>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register-modal">
+                                    Register
+                                </button>
+                            </li>
                             <li>
                                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
                                     Log in
@@ -74,6 +79,7 @@
     @*MODALS*@
 
     @Html.Partial("~/Views/Shared/Partials/_LoginPartial.cshtml")
+    @Html.Partial("~/Views/Shared/Partials/_RegisterPartial.cshtml")
 
     @RenderSection("Modals", required: false)
 
@@ -81,7 +87,6 @@
 
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Cryptography;
+using System.Web.Mvc;
 
 namespace StudentsRegister.Controllers
 {
