@@ -40,3 +40,14 @@
 .validation-summary-valid {
   display: none; }
 
+.login-form-custom {
+  padding: 50px; }
+
+.navbar-default .navbar-nav > li > a.custom-button-anchor {
+  color: #fff; }
+  .navbar-default .navbar-nav > li > a.custom-button-anchor:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74; }
+

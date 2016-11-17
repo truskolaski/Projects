@@ -35,10 +35,10 @@
 }
 
 .input-validation-error:focus {
-  border-color: #953b39;
-  -webkit-box-shadow: 0 0 6px #d59392;
-  -moz-box-shadow: 0 0 6px #d59392;
-  box-shadow: 0 0 6px #d59392;
+    border-color: #953b39;
+    -webkit-box-shadow: 0 0 6px #d59392;
+    -moz-box-shadow: 0 0 6px #d59392;
+    box-shadow: 0 0 6px #d59392;
 }
 
 .validation-summary-errors {
@@ -48,4 +48,19 @@
 
 .validation-summary-valid {
     display: none;
+}
+
+.login-form-custom {
+    padding: 50px;
+}
+
+.navbar-default .navbar-nav > li > a.custom-button-anchor {
+    color: #fff;
+
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #286090;
+        border-color: #204d74;
+    }
 }
