@@ -1,5 +1,13 @@
 ﻿@model StudentsRegister.Models.Login.LoginModel
 
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions()
+    {
+        OnFailure = "$('#login-error-div').css('display', 'block');",
+        OnSuccess = "location.href = '" + Url.Action("Index", "Home") + "'",
+    };
+}
+
 <!-- Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -11,11 +19,16 @@
                 <h4 class="modal-title" id="myModalLabel">Log in</h4>
             </div>
             <div class="modal-body">
+
+                <div class="alert alert-danger" id="login-error-div" role="alert">
+                    <strong>Error!</strong> Wrong email or password.
+                </div>
+
                 <p>
                     To log in, please type in your credentials
                 </p>
 
-                @using (Html.BeginForm("LogIn", "Login"))
+                @using (Ajax.BeginForm("LogIn", "Login", ajaxOptions))
                 {
                     <div class="form-group">
                         @Html.LabelFor(x => x.Email)

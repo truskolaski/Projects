@@ -2,6 +2,7 @@
 using StudentsRegister.Models.Login;
 using StudentsRegister.Utilities;
 using System;
+using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -43,16 +44,17 @@ namespace StudentsRegister.Controllers
                             }
                             else
                             {
-                                return RedirectToAction("Index", "Home"); // ERROR
+                                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                             }
                         }
                         else
                         {
-                            return RedirectToAction("Index", "Home"); // ERROR
+                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                         }
                     }
 
-                    return RedirectToAction("Index", "Home"); // OK
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+
                 }
                 catch (Exception ex)
                 {

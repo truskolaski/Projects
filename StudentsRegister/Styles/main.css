@@ -51,3 +51,6 @@
     background-color: #286090;
     border-color: #204d74; }
 
+#login-error-div {
+  display: none; }
+
