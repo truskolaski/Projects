@@ -1,5 +1,13 @@
 ﻿@model StudentsRegister.Models.Register.RegisterModel
 
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions()
+    {
+        OnFailure = "$('#register-error-div').css('display', 'block');",
+        OnSuccess = "location.href = '" + Url.Action("Index", "Home") + "'",
+    };
+}
+
 <!-- Modal -->
 <div class="modal fade" id="register-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -11,11 +19,16 @@
                 <h4 class="modal-title" id="myModalLabel">Register</h4>
             </div>
             <div class="modal-body">
+
+                <div class="alert alert-danger" id="register-error-div" role="alert">
+                    <strong>Error!</strong> Such email already exist.
+                </div>
+
                 <p>
                     To register, please type in your e-mail and password
                 </p>
 
-                @using (Html.BeginForm("RegisterUser", "Register"))
+                @using (Ajax.BeginForm("RegisterUser", "Register", ajaxOptions))
                 {
                     <div class="form-group">
                         @Html.LabelFor(x => x.Email)

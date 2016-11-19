@@ -2,6 +2,7 @@
 using StudentsRegister.Models.Register;
 using StudentsRegister.Utilities;
 using System;
+using System.Net;
 using System.Security.Cryptography;
 using System.Web.Mvc;
 
@@ -30,11 +31,11 @@ namespace StudentsRegister.Controllers
 
                         if(status == 0)
                         {
-                            return RedirectToAction("Index", "Home");
+                            return new HttpStatusCodeResult(HttpStatusCode.OK);
                         }
                         else
                         {
-
+                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                         }
                     }
                     catch (Exception ex)

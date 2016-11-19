@@ -62,12 +62,13 @@ namespace StudentsRegister.DataContexts
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WWW_RegisterUser")]
-		public int WWW_RegisterUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="NVarChar(50)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="NVarChar(50)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Salt", DbType="NVarChar(50)")] string salt, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(50)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RegisterDate", DbType="DateTime")] System.Nullable<System.DateTime> registerDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountType_Id", DbType="Int")] System.Nullable<int> accountType_Id, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] ref System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusText", DbType="NVarChar(50)")] ref string statusText)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WWW_GetSalt")]
+		public int WWW_GetSalt([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Salt", DbType="NVarChar(50)")] ref string salt, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] ref System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusText", DbType="NVarChar(50)")] ref string statusText)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), firstName, lastName, salt, password, registerDate, accountType_Id, email, status, statusText);
-			status = ((System.Nullable<int>)(result.GetParameterValue(7)));
-			statusText = ((string)(result.GetParameterValue(8)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, salt, status, statusText);
+			salt = ((string)(result.GetParameterValue(1)));
+			status = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			statusText = ((string)(result.GetParameterValue(3)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -80,13 +81,12 @@ namespace StudentsRegister.DataContexts
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WWW_GetSalt")]
-		public int WWW_GetSalt([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Salt", DbType="NVarChar(50)")] ref string salt, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] ref System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusText", DbType="NVarChar(50)")] ref string statusText)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WWW_RegisterUser")]
+		public int WWW_RegisterUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="NVarChar(50)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="NVarChar(50)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Salt", DbType="NVarChar(50)")] string salt, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(50)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RegisterDate", DbType="DateTime")] System.Nullable<System.DateTime> registerDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountType_Id", DbType="Int")] System.Nullable<int> accountType_Id, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] ref System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusText", DbType="NVarChar(50)")] ref string statusText)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, salt, status, statusText);
-			salt = ((string)(result.GetParameterValue(1)));
-			status = ((System.Nullable<int>)(result.GetParameterValue(2)));
-			statusText = ((string)(result.GetParameterValue(3)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), firstName, lastName, salt, password, registerDate, accountType_Id, email, status, statusText);
+			status = ((System.Nullable<int>)(result.GetParameterValue(7)));
+			statusText = ((string)(result.GetParameterValue(8)));
 			return ((int)(result.ReturnValue));
 		}
 	}
