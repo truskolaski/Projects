@@ -9,32 +9,33 @@ namespace StudentsRegister.Controllers
 {
     public class RegisterController : Controller
     {
+        int? status = 0;
+        string statusText;
+
         // GET: Register
-        public ActionResult Index(RegisterModel registerModel)
+        public ActionResult RegisterUser(RegisterModel registerModel)
         {
             if (ModelState.IsValid == true)
             {
                 string salt;
                 string password;
 
-                Utility.SetSaltAndPassword(out salt, out password, registerModel);
+                Utility.SetSaltAndPassword(out salt, out password, registerModel.Password);
 
                 using (var db = new StudentsRegisterDataContext())
                 {
                     try
                     {
-                        D_Student student = new D_Student()
+                        db.WWW_RegisterUser(registerModel.Name, registerModel.Surname, salt, password, DateTime.Now, 2, registerModel.Email, ref status, ref statusText);
+
+                        if(status == 0)
                         {
-                            Email = registerModel.Email,
-                            Name = registerModel.Name,
-                            Surname = registerModel.Surname,
-                            Password = password,
-                            Salt = salt
-                        };
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
 
-                        db.D_Students.InsertOnSubmit(student);
-
-                        db.SubmitChanges();
+                        }
                     }
                     catch (Exception ex)
                     {
