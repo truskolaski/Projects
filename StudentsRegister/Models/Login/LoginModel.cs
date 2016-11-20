@@ -13,5 +13,7 @@ namespace StudentsRegister.Models.Login
         [DisplayName("Password")]
         [Required(ErrorMessage = "You must type in your password")]
         public string Password { get; set; }
+
+        public int? AccountType { get; set; }
     }
 }

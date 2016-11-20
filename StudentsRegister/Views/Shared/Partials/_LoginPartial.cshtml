@@ -3,7 +3,7 @@
 @{
     AjaxOptions ajaxOptions = new AjaxOptions()
     {
-        OnFailure = "$('#login-error-div').css('display', 'block');",
+        OnFailure = "$('#login-error-div').slideDown('slow')",
         OnSuccess = "location.href = '" + Url.Action("Index", "Home") + "'",
     };
 }

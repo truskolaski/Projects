@@ -76,11 +76,6 @@
 
     </div>
 
-    @*MODALS*@
-
-    @Html.Partial("~/Views/Shared/Partials/_LoginPartial.cshtml")
-    @Html.Partial("~/Views/Shared/Partials/_RegisterPartial.cshtml")
-
     @RenderSection("Modals", required: false)
 
     @***************************************************************@
@@ -91,5 +86,6 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
+    <script src="~/TypeScript/main.js"></script>
 </body>
 </html>
