@@ -72,15 +72,6 @@ namespace StudentsRegister.DataContexts
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WWW_GetUserMarks")]
-		public ISingleResult<WWW_GetUserMarksResult> WWW_GetUserMarks([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] ref System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusText", DbType="NVarChar(50)")] ref string statusText)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId, status, statusText);
-			status = ((System.Nullable<int>)(result.GetParameterValue(1)));
-			statusText = ((string)(result.GetParameterValue(2)));
-			return ((ISingleResult<WWW_GetUserMarksResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WWW_RegisterUser")]
 		public ISingleResult<WWW_RegisterUserResult> WWW_RegisterUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="NVarChar(50)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="NVarChar(50)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Salt", DbType="NVarChar(50)")] string salt, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(50)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RegisterDate", DbType="DateTime")] System.Nullable<System.DateTime> registerDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountType_Id", DbType="Int")] System.Nullable<int> accountType_Id, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] ref System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusText", DbType="NVarChar(50)")] ref string statusText)
 		{
@@ -98,85 +89,14 @@ namespace StudentsRegister.DataContexts
 			statusText = ((string)(result.GetParameterValue(3)));
 			return ((ISingleResult<WWW_LoginUserResult>)(result.ReturnValue));
 		}
-	}
-	
-	public partial class WWW_GetUserMarksResult
-	{
 		
-		private int _Mark;
-		
-		private int _Subject_Id;
-		
-		private string _SubjectName;
-		
-		private int _User_Id;
-		
-		public WWW_GetUserMarksResult()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WWW_GetUserMarks")]
+		public ISingleResult<WWW_GetUserMarksResult> WWW_GetUserMarks([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] ref System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusText", DbType="NVarChar(50)")] ref string statusText)
 		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mark", DbType="Int NOT NULL")]
-		public int Mark
-		{
-			get
-			{
-				return this._Mark;
-			}
-			set
-			{
-				if ((this._Mark != value))
-				{
-					this._Mark = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject_Id", DbType="Int NOT NULL")]
-		public int Subject_Id
-		{
-			get
-			{
-				return this._Subject_Id;
-			}
-			set
-			{
-				if ((this._Subject_Id != value))
-				{
-					this._Subject_Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubjectName", DbType="NVarChar(50)")]
-		public string SubjectName
-		{
-			get
-			{
-				return this._SubjectName;
-			}
-			set
-			{
-				if ((this._SubjectName != value))
-				{
-					this._SubjectName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_User_Id", DbType="Int NOT NULL")]
-		public int User_Id
-		{
-			get
-			{
-				return this._User_Id;
-			}
-			set
-			{
-				if ((this._User_Id != value))
-				{
-					this._User_Id = value;
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId, status, statusText);
+			status = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			statusText = ((string)(result.GetParameterValue(2)));
+			return ((ISingleResult<WWW_GetUserMarksResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -479,6 +399,140 @@ namespace StudentsRegister.DataContexts
 				if ((this._Email != value))
 				{
 					this._Email = value;
+				}
+			}
+		}
+	}
+	
+	public partial class WWW_GetUserMarksResult
+	{
+		
+		private int _Mark;
+		
+		private int _Subject_Id;
+		
+		private string _SubjectName;
+		
+		private int _User_Id;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private System.DateTime _MarkDate;
+		
+		public WWW_GetUserMarksResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mark", DbType="Int NOT NULL")]
+		public int Mark
+		{
+			get
+			{
+				return this._Mark;
+			}
+			set
+			{
+				if ((this._Mark != value))
+				{
+					this._Mark = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject_Id", DbType="Int NOT NULL")]
+		public int Subject_Id
+		{
+			get
+			{
+				return this._Subject_Id;
+			}
+			set
+			{
+				if ((this._Subject_Id != value))
+				{
+					this._Subject_Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubjectName", DbType="NVarChar(50)")]
+		public string SubjectName
+		{
+			get
+			{
+				return this._SubjectName;
+			}
+			set
+			{
+				if ((this._SubjectName != value))
+				{
+					this._SubjectName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_User_Id", DbType="Int NOT NULL")]
+		public int User_Id
+		{
+			get
+			{
+				return this._User_Id;
+			}
+			set
+			{
+				if ((this._User_Id != value))
+				{
+					this._User_Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarkDate", DbType="DateTime NOT NULL")]
+		public System.DateTime MarkDate
+		{
+			get
+			{
+				return this._MarkDate;
+			}
+			set
+			{
+				if ((this._MarkDate != value))
+				{
+					this._MarkDate = value;
 				}
 			}
 		}

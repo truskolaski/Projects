@@ -31,11 +31,19 @@
                     <th>
                         Mark
                     </th>
+                    <th>
+                        Tutor
+                    </th>
+                    <th>
+                        Date
+                    </th>
                 </tr>
                 @foreach (var mark in item.Marks)
                 {
                     <tr class="@mark.Color">
                         <td>@mark.Mark</td>
+                        <td>@(mark.TutorName + " " + @mark.TutorLastName)</td>
+                        <td>@mark.MarkDate</td>
                     </tr>
                 }
             </tbody>

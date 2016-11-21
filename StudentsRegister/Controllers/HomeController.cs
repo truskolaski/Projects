@@ -28,7 +28,10 @@ namespace StudentsRegister.Controllers
                         .Select(x => new MarkModel()
                         {
                             Mark = x.Mark,
-                            SubjectName = x.SubjectName
+                            TutorName = x.FirstName,
+                            TutorLastName = x.LastName,
+                            SubjectName = x.SubjectName,
+                            MarkDate = x.MarkDate
                         })
                         .GroupBy(x => x.SubjectName)
                         .Select(grp =>
