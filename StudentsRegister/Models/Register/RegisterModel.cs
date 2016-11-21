@@ -10,13 +10,13 @@ namespace StudentsRegister.Models.Register
         [EmailAddress(ErrorMessage = "You must type proper e-mail address")]
         public string Email { get; set; }
 
-        [DisplayName("Name")]
-        [Required(ErrorMessage = "You must type your name")]
-        public string Name { get; set; }
+        [DisplayName("Firstname")]
+        [Required(ErrorMessage = "You must type your firstname")]
+        public string FirstName { get; set; }
 
-        [DisplayName("Surname")]
-        [Required(ErrorMessage = "You must type your surname")]
-        public string Surname { get; set; }
+        [DisplayName("Lastname")]
+        [Required(ErrorMessage = "You must type your lastname")]
+        public string LastName { get; set; }
 
         [DisplayName("Password")]
         [Required(ErrorMessage = "You must type in your password")]

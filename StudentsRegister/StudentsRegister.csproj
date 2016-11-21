@@ -183,6 +183,7 @@
     <Compile Include="Models\Home\MarkModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Models\Register\RegisterModel.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Utility.cs" />
   </ItemGroup>
@@ -194,9 +195,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Styles\main.scss" />
-    <Content Include="Views\Shared\Partials\_LoginPartial.cshtml" />
+    <Content Include="Views\Login\Partials\_LoginPartial.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Shared\Partials\_RegisterPartial.cshtml" />
+    <Content Include="Views\Register\Partials\_RegisterPartial.cshtml" />
     <Content Include="Views\Home\IndexLoggedInUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -207,7 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Register\" />
+    <Folder Include="Views\Shared\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

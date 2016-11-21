@@ -3,8 +3,10 @@ using StudentsRegister.DataContexts;
 using StudentsRegister.Models;
 using StudentsRegister.Models.Home;
 using StudentsRegister.Models.Login;
+using StudentsRegister.Models.User;
 using StudentsRegister.Utilities;
 using System;
+using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -29,41 +31,44 @@ namespace StudentsRegister.Controllers
             {
                 string salt = null;
                 string password = null;
-                int? accountType = null;
-                int? id = null;
 
                 try
                 {
                     Utility.GetHashedPassword(loginModel.Email, salt, ref password, loginModel.Password, ref status, ref statusText);
 
-                    if(status == 0)
+                    if (status == 0)
                     {
                         using (var db = new StudentsRegisterDataContext())
                         {
-                            db.WWW_LoginUser(ref id, loginModel.Email, password, ref accountType, ref status, ref statusText);
-                        }
+                            var user = db.WWW_LoginUser(loginModel.Email, password, ref status, ref statusText)
+                                 .Select(x => new UserModel()
+                                 {
+                                     Id = x.Id,
+                                     FirstName = x.FirstName,
+                                     LastName = x.LastName,
+                                     Email = x.Email,
+                                     AccountType = x.AccountType_Id
+                                 })
+                            .ToList()
+                            .FirstOrDefault();
 
-                        if (status == 0)
-                        {
-                            FormsAuthentication.SetAuthCookie("login", true);
-
-                            HomeModel homeModel = new HomeModel()
+                            if (status == 0)
                             {
-                                Id = id,
-                                Email = loginModel.Email,
-                                AccountType = accountType
-                            };
+                                if (user == null)
+                                {
+                                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                                }
+                                else
+                                {
+                                    FormsAuthentication.SetAuthCookie(JsonConvert.SerializeObject(user), true);
 
-                            HttpCookie loginCookie = new HttpCookie("user", JsonConvert.SerializeObject(homeModel));
-                            loginCookie.Expires = DateTime.Now.AddDays(1d);
-
-                            Response.Cookies.Add(loginCookie);
-
-                            return new HttpStatusCodeResult(HttpStatusCode.OK);
-                        }
-                        else
-                        {
-                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                                }
+                            }
+                            else
+                            {
+                                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                            }
                         }
                     }
                     else
@@ -85,7 +90,6 @@ namespace StudentsRegister.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            Response.Cookies["user"].Expires = DateTime.Now.AddDays(-1d);
 
             return RedirectToAction("Index", "Home");
         }

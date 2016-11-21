@@ -1,10 +1,14 @@
-﻿using StudentsRegister.DataContexts;
+﻿using Newtonsoft.Json;
+using StudentsRegister.DataContexts;
+using StudentsRegister.Models.Home;
 using StudentsRegister.Models.Register;
+using StudentsRegister.Models.User;
 using StudentsRegister.Utilities;
 using System;
+using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace StudentsRegister.Controllers
 {
@@ -13,7 +17,6 @@ namespace StudentsRegister.Controllers
         int? status = 0;
         string statusText;
 
-        // GET: Register
         public ActionResult RegisterUser(RegisterModel registerModel)
         {
             if (ModelState.IsValid == true)
@@ -27,11 +30,30 @@ namespace StudentsRegister.Controllers
                 {
                     try
                     {
-                        db.WWW_RegisterUser(registerModel.Name, registerModel.Surname, salt, password, DateTime.Now, 2, registerModel.Email, ref status, ref statusText);
+                        var user = db.WWW_RegisterUser(registerModel.FirstName, registerModel.LastName, salt, password, DateTime.Now, 2, registerModel.Email, ref status, ref statusText)
+                            .Select(x => new UserModel()
+                            {
+                                Id = x.Id,
+                                FirstName = x.FirstName,
+                                LastName = x.LastName,
+                                Email = x.Email,
+                                AccountType = x.AccountType_Id
+                            })
+                            .ToList()
+                            .FirstOrDefault();
 
                         if(status == 0)
                         {
-                            return new HttpStatusCodeResult(HttpStatusCode.OK);
+                            if(user == null)
+                            {
+                                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                            }
+                            else
+                            {
+                                FormsAuthentication.SetAuthCookie(JsonConvert.SerializeObject(user), true);
+
+                                return new HttpStatusCodeResult(HttpStatusCode.OK);
+                            }
                         }
                         else
                         {

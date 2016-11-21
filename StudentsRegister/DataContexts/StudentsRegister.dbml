@@ -7,6 +7,17 @@
     <Parameter Name="StatusText" Parameter="statusText" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.WWW_GetUserMarks" Method="WWW_GetUserMarks">
+    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="StatusText" Parameter="statusText" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <ElementType Name="WWW_GetUserMarksResult">
+      <Column Name="Mark" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Subject_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubjectName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.WWW_RegisterUser" Method="WWW_RegisterUser">
     <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
@@ -17,28 +28,31 @@
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Parameter Name="StatusText" Parameter="statusText" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
-    <Return Type="System.Int32" />
+    <ElementType Name="WWW_RegisterUserResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Salt" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RegisterDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AccountType_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
   <Function Name="dbo.WWW_LoginUser" Method="WWW_LoginUser">
-    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="AccountType" Parameter="accountType" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Parameter Name="StatusText" Parameter="statusText" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
     <ElementType Name="WWW_LoginUserResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Salt" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RegisterDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="AccountType_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.WWW_GetUserMarks" Method="WWW_GetUserMarks">
-    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <Parameter Name="StatusText" Parameter="statusText" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
-    <ElementType Name="WWW_GetUserMarksResult">
-      <Column Name="Mark" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Subject_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SubjectName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>
