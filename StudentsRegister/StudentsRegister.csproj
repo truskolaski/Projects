@@ -160,12 +160,14 @@
     <Content Include="Styles\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="TypeScript\admin-scripts.js" />
     <Content Include="TypeScript\main.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -178,7 +180,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Home\GroupedMarks.cs" />
-    <Compile Include="Models\Home\HomeModel.cs" />
+    <Compile Include="Models\Admin\AddUserAdminModel.cs" />
+    <Compile Include="Models\Student\ShowMarksStudentModel.cs" />
     <Compile Include="Models\Home\MarkModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Models\Register\RegisterModel.cs" />
@@ -198,6 +201,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Partials\_RegisterPartial.cshtml" />
     <Content Include="Views\Home\IndexLoggedInUser.cshtml" />
+    <Content Include="Views\Admin\AddUserAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -207,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Tutor\" />
     <Folder Include="Views\Shared\Partials\" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +224,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="TypeScript\admin-scripts.ts" />
     <TypeScriptCompile Include="TypeScript\main.ts" />
   </ItemGroup>
   <PropertyGroup>
